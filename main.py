@@ -3,7 +3,7 @@ import xml.dom.minidom
 import xml.etree.ElementTree as ET
 
 
-from conveniences import prettyprintxml, get_timestamp, check_file, count_occurances
+from conveniences import prettyprintxml, get_timestamp, check_file, count_occurrences
 from response import getContact
 
 
@@ -52,7 +52,7 @@ check_file(folderpath, filepath)
 # format and output variables
 divider = '<-/~/~/~/~/ [ current GMT timestamp: '
 timestamp = get_timestamp()
-occurrences = count_occurances(filepath, divider)
+occurrences = count_occurrences(filepath, divider)
 
 # create list of contact ids
 cids = create_contact_ids_list()

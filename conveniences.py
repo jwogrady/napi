@@ -1,13 +1,8 @@
 import os
-import io
 import calendar
 import time
-
-
-import logging
 import xml.dom.minidom
 import xml.etree.ElementTree as ET
-
 from dotenv import dotenv_values
 
 env = dotenv_values('.env')
@@ -19,16 +14,19 @@ ns_vs = env['NS_VS']
 ns_typ = env['NS_TYP']
 ns_key = env['NS_KEY']
 
+
 def make_url(operation):
     url = ns_url
     url_parts = [url, operation]
     url = ''.join(url_parts)
     return url
 
+
 def get_timestamp():
     current_GMT = time.gmtime()
     timestamp = calendar.timegm(current_GMT)
     return str(timestamp)
+
 
 def check_file(folderpath, filepath):
     if not os.path.exists(folderpath):
@@ -39,14 +37,14 @@ def check_file(folderpath, filepath):
         print('File already exists')
 
 
-def count_occurances(filepath, divider):
+def count_occurrences(filepath, divider):
     if not os.path.exists(filepath):
         check_file(filepath)
     print('Directory Exists')
     target = open(filepath, 'r')
     data = target.read()
-    occurance = data.count(divider)
-    return str(occurance)
+    occurrence = data.count(divider)
+    return str(occurrence)
 
 
 def prettyprintxml(dom, pxml, root):
