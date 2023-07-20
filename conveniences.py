@@ -21,11 +21,28 @@ def make_url(operation):
     url = ''.join(url_parts)
     return url
 
+make_url.__doc__="""Make the base url
 
-def get_timestamp():
+Joins the base url parts.
+
+type:
+string
+
+exp.) 'https://www.namesilo.com/api/contactAdd'
+"""
+
+def make_timestamp():
     current_GMT = time.gmtime()
     timestamp = calendar.timegm(current_GMT)
     return str(timestamp)
+
+make_timestamp.__doc__="""Makes a timestamp string
+
+type:
+string 
+
+exp.) '1689815434'
+"""
 
 
 def check_file(folderpath, filepath):
@@ -35,6 +52,8 @@ def check_file(folderpath, filepath):
         print('Created new file')
     else:
         print('File already exists')
+
+check_file.__doc__="""Creates folder amd file if one doesn't already exist"""
 
 
 def count_occurrences(filepath, divider):
@@ -46,9 +65,13 @@ def count_occurrences(filepath, divider):
     occurrence = data.count(divider)
     return str(occurrence)
 
+count_occurrences.__doc__="""Counts the number of occourances of 'divider' str variable in a output file
+
+type: str
+exp.) '9'
+"""
 
 def prettyprintxml(dom, pxml, root):
-    pxml = xml.dom.minidom.parseString(dom).toprettyxml()
     if not os.path.exists('output'):
         os.makedirs('output')
     print(dom, file=open('output/dom.xml', 'w'))

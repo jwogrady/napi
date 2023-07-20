@@ -3,7 +3,7 @@ import xml.dom.minidom
 import xml.etree.ElementTree as ET
 
 
-from conveniences import prettyprintxml, get_timestamp, check_file, count_occurrences
+from conveniences import make_timestamp, check_file, count_occurrences, prettyprintxml
 from response import getContact
 
 
@@ -16,6 +16,9 @@ root = ET.fromstring(dom)
 # another way
 pxml = xml.dom.minidom.parseString(dom).toprettyxml()
 
+# demonstrate output
+prettyprintxml(dom, root, pxml)
+
 
 def create_contact_ids_list():
     cids = []
@@ -23,6 +26,10 @@ def create_contact_ids_list():
         # print(x.text)
         cids.append(x.text)
     return cids
+
+
+# create list of contact ids
+cids = create_contact_ids_list()
 
 
 def output_content_ids(filepath, timestamp, occurrences, divider, cids):
@@ -51,16 +58,13 @@ check_file(folderpath, filepath)
 
 # format and output variables
 divider = '<-/~/~/~/~/ [ current GMT timestamp: '
-timestamp = get_timestamp()
+timestamp = make_timestamp()
 occurrences = count_occurrences(filepath, divider)
 
-# create list of contact ids
-cids = create_contact_ids_list()
 
 # call the methods
 output_content_ids(filepath, timestamp, occurrences, divider, cids)
 
-prettyprintxml(dom, root, pxml)
 
 # playground
 
