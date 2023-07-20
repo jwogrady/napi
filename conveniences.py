@@ -5,10 +5,10 @@ import xml.dom.minidom
 import xml.etree.ElementTree as ET
 from dotenv import dotenv_values
 
+
 env = dotenv_values('.env')
 
-
-# Model variable
+# Model variables
 ns_url = env['NS_URL']
 ns_vs = env['NS_VS']
 ns_typ = env['NS_TYP']

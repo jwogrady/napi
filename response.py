@@ -5,8 +5,8 @@ from conveniences import make_url, ns_key, ns_typ, ns_vs
 
 def request(operation, payload):
     url = make_url(operation=operation,)
-    response = requests.get(url=url, params=payload)
-    return response
+    resp = requests.get(url=url, params=payload)
+    return resp
 
 
 def getContact():
